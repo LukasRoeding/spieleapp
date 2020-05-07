@@ -1,3 +1,6 @@
+Mein erstes größeres Angularprojekt. Mein Ziel mit diesem Projekt war es, meine Java-/Typescript Fähigkeiten zu verbessern und mich mit Angular vertraut zu machen.
+Die Website bietet dem Nutzer die Möglichkeit mehrere Spieleklassiker gegen sich selber, oder einem Mitspieler im Raum zu spielen. Der Code für das Maze befindet sich im paint Ordner, da ich ursprünglich vor hatte, etwas wie paint zu programmieren. Ich entschied mich dann aber dagegen und wandelte den compononet in ein Maze um.
+
 # Spieleapp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.3.
