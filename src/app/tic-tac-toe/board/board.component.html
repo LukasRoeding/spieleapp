@@ -1,0 +1,56 @@
+<div class="grid-container">
+    
+    <div>
+
+     
+<h1>Spieler am Zug: {{player}}</h1>
+
+
+
+<! wenn(ngIf) ein Spieler gewinnt, wird dieser Text angezeigt, sonst nicht>
+<h2 *ngIf="winner">
+    Spieler {{winner}} gewinnt!
+</h2>
+<main>
+    <app-square
+        *ngFor="let val of squares; let i = index"
+        [value]="val"
+        (click)="makeMove(i)">
+    </app-square>
+</main>
+<button nbButton hero status="success" size="giant" (click)="newGame()">neues Spiel</button>
+
+    </div>
+    <div>
+        <nb-accordion>
+            <nb-accordion-item>
+              <nb-accordion-item-header>
+                Spielregeln
+              </nb-accordion-item-header>
+              <nb-accordion-item-body id="regeln">
+                Tic-Tac-Toe oder Drei gewinnt ist ein klassisches, einfaches Zweipersonen-Strategiespiel, 
+                dessen Geschichte sich bis ins 12. Jahrhundert v. Chr. zurückverfolgen lässt. 
+                Auf einem quadratischen, 3×3 Felder großen Spielfeld setzen die beiden Spieler abwechselnd ihr Zeichen (ein Spieler Kreuze, 
+                der andere Kreise) in ein freies Feld. Der Spieler, der als Erster drei Zeichen in eine Zeile, 
+                Spalte oder Diagonale setzen kann, gewinnt. Wenn allerdings beide Spieler optimal spielen, kann keiner gewinnen, 
+                und es kommt zu einem Unentschieden. Das heißt, alle neun Felder sind gefüllt, 
+                ohne dass ein Spieler die erforderlichen Zeichen in einer Reihe, Spalte oder Diagonalen setzen konnte. 
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+        </nb-accordion>
+        <nb-accordion>
+            <nb-accordion-item>
+                <nb-accordion-item-header>
+                  Rules
+                </nb-accordion-item-header>
+                <nb-accordion-item-body id="regeln">
+                    Tic-tac-toe (American English), noughts and crosses (British English), or Xs and Os is a paper-and-pencil game for two players, 
+                    X and O, who take turns marking the spaces in a 3×3 grid. The player who succeeds in placing three of their marks in a horizontal, 
+                    vertical, or diagonal row is the winner. Players soon discover that the best play from both parties leads to a draw. 
+                    Hence, tic-tac-toe is most often played by young children, 
+                    who often have not yet discovered the optimal strategy. 
+                </nb-accordion-item-body>
+              </nb-accordion-item>
+          </nb-accordion>
+    </div>
+</div>

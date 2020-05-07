@@ -1,0 +1,32 @@
+<div class="grid-container">
+
+  <div id="maze-holder">
+  <h2 *ngIf="winner">
+    {{winner}}!
+</h2></div>
+
+  <div class="grid-accordion">
+  <button class="button" nbButton hero status="success" size="giant" (click)="newGame()">neues Spiel</button>  
+      <nb-accordion>
+          <nb-accordion-item>
+            <nb-accordion-item-header>
+              Spielregeln
+            </nb-accordion-item-header>
+            <nb-accordion-item-body id="regeln">
+              Maze ist ein Labyrinth-Spiel. Das Ziel des Spiel ist es, den Kreis am Ende des Labyrinths zu erreichen, ohne in eine Wand zu rennen. 
+              Wie beim Snake-Spiel steuert der Spieler seine Spielfigur mit den Pfeiltasten der Tastatur.
+            </nb-accordion-item-body>
+          </nb-accordion-item>
+      </nb-accordion>
+      <nb-accordion>
+          <nb-accordion-item>
+              <nb-accordion-item-header>
+                Rules
+              </nb-accordion-item-header>
+              <nb-accordion-item-body id="regeln">
+                The goal of Maze is to get to the circle at the end of the maze. If you hit a wall you have to start over. Just like the snake-game 
+                your character is controlled by the arrowkeys of your keyboard.
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+        </nb-accordion>
+  </div></div>
