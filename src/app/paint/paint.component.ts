@@ -22,7 +22,22 @@ export class PaintComponent implements OnInit {
   winner: string;
 
   constructor() {}
-
+  up(){
+    this.xspeed = 0;
+    this.yspeed = -1;
+  }
+  down(){
+    this.xspeed = 0;
+    this.yspeed = 1;
+  }
+  left(){
+    this.xspeed = -1;
+    this.yspeed = 0;
+  }
+  right(){
+    this.xspeed = 1;
+    this.yspeed = 0;
+  }
   ngOnInit() {
     // this sketch was modified from the original
     // https://editor.p5js.org/Janglee123/sketches/HJ2RnrQzN

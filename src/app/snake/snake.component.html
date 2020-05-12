@@ -2,6 +2,10 @@
 
 <div id="sketch-holder"><h1>Highscore: {{score}}</h1></div>
 <div>
+  <button (click)="up()" nbButton hero status="info" > up </button>
+  <button (click)="down()" nbButton hero status="info" > down </button>
+  <button (click)="left()" nbButton hero status="info" > left </button>
+  <button (click)="right()" nbButton hero status="info" > right </button>
     <nb-accordion>
         <nb-accordion-item>
           <nb-accordion-item-header>

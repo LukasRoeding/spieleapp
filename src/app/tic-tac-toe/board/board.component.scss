@@ -18,12 +18,16 @@ app-square{
 button{
     margin-top: 10px;
     margin-bottom: 10px;
+    width:36vw;
 }
 @media screen and (max-width: 865px){
     .grid-container{
         display:grid;
-        grid-template-columns: 90%;
+        grid-template-columns: 100%;
         grid-template-rows: auto auto;
+    }
+    button{
+        width:100%;
     }
     #regeln{
       font-size: 1.1rem;

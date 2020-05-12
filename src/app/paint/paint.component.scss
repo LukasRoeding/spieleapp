@@ -17,19 +17,29 @@
 #maze-holder{
   grid-row:1;
   margin-top: 10px;
+  
 }
 .button{
   margin-bottom: 10px;
   margin-top: 10px;
+  width: 100%;
+  
+}
+.control-buttons{
+  visibility: hidden;
 }
 @media screen and (max-width: 865px){
   .grid-accordion{
     grid-row: 2;
     grid-column: 1;
   }
+  .control-buttons{
+    visibility: visible;
+    width:25%;
+  }
     .grid-container{
         display:grid;
-        grid-template-columns: 90%;
+        grid-template-columns: 100%;
         grid-template-rows: auto auto ;
         grid-gap: 0%;
     }

@@ -6,6 +6,10 @@
 </h2></div>
 
   <div class="grid-accordion">
+    <button class="control-buttons" (click)="up()" nbButton hero status="info" > up </button>
+    <button class="control-buttons" (click)="down()" nbButton hero status="info" > down </button>
+    <button class="control-buttons" (click)="left()" nbButton hero status="info" > left </button>
+    <button class="control-buttons" (click)="right()" nbButton hero status="info" > right </button>
   <button class="button" nbButton hero status="success" size="giant" (click)="newGame()">neues Spiel</button>  
       <nb-accordion>
           <nb-accordion-item>

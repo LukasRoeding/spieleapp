@@ -22,13 +22,28 @@ export class SnakeComponent implements OnInit {
   score = 0;
 
   constructor() {}
-
+  up(){
+    this.xspeed = 0;
+    this.yspeed = -1;
+  }
+  down(){
+    this.xspeed = 0;
+    this.yspeed = 1;
+  }
+  left(){
+    this.xspeed = -1;
+    this.yspeed = 0;
+  }
+  right(){
+    this.xspeed = 1;
+    this.yspeed = 0;
+  }
   ngOnInit() {
     // this sketch was modified from the original
     // https://editor.p5js.org/Janglee123/sketches/HJ2RnrQzN
     const sketch = s => {
       s.setup = () => {
-        let canvas2 = s.createCanvas(s.windowHeight - 300, s.windowHeight - 300);
+        let canvas2 = s.createCanvas(s.windowHeight -300, s.windowHeight - 300);
 
         // creating a reference to the div here positions it so you can put things above and below
         // where the sketch is displayed
@@ -127,9 +142,12 @@ export class SnakeComponent implements OnInit {
         
 
       }
+      
 
+      
     };
 
     this.canvas = new p5(sketch);
+
   }
 }
