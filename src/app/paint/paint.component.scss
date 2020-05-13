@@ -25,7 +25,10 @@
   width: 100%;
   
 }
-.control-buttons{
+.button-large{
+  visibility: hidden;
+}
+.button-small{
   visibility: hidden;
 }
 @media screen and (max-width: 865px){
@@ -33,10 +36,15 @@
     grid-row: 2;
     grid-column: 1;
   }
-  .control-buttons{
+  .button-small{
+  visibility: visible;
+  width:50%;
+  margin-bottom: 1px;}
+  .button-large{
     visibility: visible;
-    width:25%;
-  }
+    width:100%;
+    margin-bottom: 1px;
+   }
     .grid-container{
         display:grid;
         grid-template-columns: 100%;

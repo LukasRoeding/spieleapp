@@ -25,18 +25,22 @@ export class SnakeComponent implements OnInit {
   up(){
     this.xspeed = 0;
     this.yspeed = -1;
+    this.scl= 12;
   }
   down(){
     this.xspeed = 0;
     this.yspeed = 1;
+    this.scl= 12;
   }
   left(){
     this.xspeed = -1;
     this.yspeed = 0;
+    this.scl= 12;
   }
   right(){
     this.xspeed = 1;
     this.yspeed = 0;
+    this.scl= 12;
   }
   ngOnInit() {
     // this sketch was modified from the original
@@ -106,7 +110,7 @@ export class SnakeComponent implements OnInit {
 
       s.death = () => {
           for(var i = 0; i < this.tail.length;i++){
-            if (s.dist(this.x, this.y, this.tail[i].x, this.tail[i].y)<20){
+            if (s.dist(this.x, this.y, this.tail[i].x, this.tail[i].y)<this.scl){
               this.total=0;
               this.tail=[];
               this.scl=20;

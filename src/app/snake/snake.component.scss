@@ -6,6 +6,9 @@
 button{
  visibility: hidden;
 }
+.button-large{
+  visibility: hidden;
+ }
 @media screen and (max-width: 865px){
     .grid-container{
         display:grid;
@@ -13,9 +16,15 @@ button{
         grid-template-rows: auto auto;
         button{
           visibility: visible;
-          width: 25%;
+          width: 50%;
+          margin-bottom: 1px;
 
         }
+        .button-large{
+          visibility: visible;
+          width:100%;
+          margin-bottom: 1px;
+         }
     }}
     #regeln{
       font-size: 1.1rem;
