@@ -87,7 +87,7 @@ export class SnakeComponent implements OnInit {
                 this.yspeed = 0;}
         };
         s.eat = () => {
-          if (s.dist(this.x,this.y,(s.windowHeight - 320)*this.a,(s.windowHeight - 320)*this.b)<this.scl){
+          if (s.dist(this.x,this.y,(s.windowHeight - 300 - this.scl)*this.a,(s.windowHeight - 300 - this.scl)*this.b)<this.scl){
             
             this.a=Math.random();
             this.b = Math.random();
@@ -104,13 +104,13 @@ export class SnakeComponent implements OnInit {
 
         s.food = () => {
 
-        s.rect((s.windowHeight - 320)*this.a,(s.windowHeight - 320)*this.b, this.scl, this.scl);
+        s.rect((s.windowHeight - 300 - this.scl)*this.a,(s.windowHeight - 300 - this.scl)*this.b, this.scl, this.scl);
         s.fill("#00d68f");
       }
 
       s.death = () => {
           for(var i = 0; i < this.tail.length;i++){
-            if (s.dist(this.x, this.y, this.tail[i].x, this.tail[i].y)<this.scl){
+            if (s.dist(this.x, this.y, this.tail[i].x, this.tail[i].y)<5){
               this.total=0;
               this.tail=[];
               this.scl=20;
