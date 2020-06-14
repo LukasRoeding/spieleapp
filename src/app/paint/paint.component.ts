@@ -8,20 +8,17 @@ import * as p5 from 'p5';
 })
 export class PaintComponent implements OnInit {
   canvas3: any;
+  /** coordinates of the rectangle */
   x = 0;
   y = 0;
+  /** direction in which the rectangle moves */
   xspeed = 1;
   yspeed = 0;
   scl=20;
-  a = Math.random();
-  b = Math.random();
-  total = 0;
-  tail = [];
-  score = 0;
-  start = 10;
   winner: string;
 
   constructor() {}
+  /** clickevent controllbuttons for mobile */
   up(){
     this.xspeed = 0;
     this.yspeed = -1;
@@ -39,15 +36,13 @@ export class PaintComponent implements OnInit {
     this.yspeed = 0;
   }
   ngOnInit() {
-    // this sketch was modified from the original
-    // https://editor.p5js.org/Janglee123/sketches/HJ2RnrQzN
+
     this.winner = null;
     const sketch = s => {
       s.setup = () => {
         let canvas4 = s.createCanvas(340,260);
 
-        // creating a reference to the div here positions it so you can put things above and below
-        // where the sketch is displayed
+
         canvas4.parent('maze-holder');
         
 
@@ -69,6 +64,7 @@ export class PaintComponent implements OnInit {
         s.start();
         
       };
+      /** if an arrowkey is pressed the direction of the rectangle changes accordingly */
       s.keyPressed = () => {
         if (s.keyCode === s.UP_ARROW){
           this.xspeed = 0;
@@ -83,6 +79,7 @@ export class PaintComponent implements OnInit {
                 this.xspeed = -1;
                 this.yspeed = 0;}
         };
+        /** creates all the walls of the maze */
         s.start = () => {
 
             for(var i = 0; i < 10; i++){
@@ -105,50 +102,38 @@ export class PaintComponent implements OnInit {
 
 
         }
+        /** if the "food" at the end of the maze is beeing eaten, then "Gewonnen" will be displayed */
         s.eat = () => {
           if (s.dist(this.x,this.y,0,180)<this.scl){
             
-            this.a=Math.random();
-            this.b = Math.random();
-            this.total++;
+
             this.winner = "Gewonnen";
-            if(this.total == 10){
-              this.scl=this.scl+10;
-            }
-            return console.log(this.tail)
+            
           }else{
             return false;
           }
 
         }
-
+        /** position of the food at the end of the maze */
         s.food = () => {
 
         s.rect(0,180, this.scl, this.scl, 55);
         s.fill("#00d68f");
 
       }
-
+      /** if the rectangle collides with any of the walls, the game resets */
       s.death = () => {
-          for(var i = 0; i < this.tail.length;i++){
-            if (s.dist(this.x, this.y, this.tail[i].x, this.tail[i].y)<20){
-              this.total=0;
-              this.tail=[];
-              this.scl=20;
-            }
-          }
+
           for(var i = 0; i < 10; i++){
 
             if (s.dist(this.x, this.y, i*this.scl, this.scl)<20){
-              this.total=0;
-              this.tail=[];
+
               this.scl=20;
               this.x = 0;
               this.y = 0;
 
             }else if(s.dist(this.x, this.y, (i+2)*this.scl, 80)<20){
-              this.total=0;
-              this.tail=[];
+
               this.scl=20;
 
               this.x = 0;
@@ -159,8 +144,7 @@ export class PaintComponent implements OnInit {
           }
           for(var i = 0; i < 4; i++){
             if (s.dist(this.x, this.y, 240, i*this.scl)<20){
-              this.total=0;
-              this.tail=[];
+
               this.scl=20;
 
               this.x = 0;
@@ -171,8 +155,7 @@ export class PaintComponent implements OnInit {
 
           for(var i = 0; i < 12; i++){
             if (s.dist(this.x, this.y, 300, i*this.scl)<20){
-              this.total=0;
-              this.tail=[];
+
               this.scl=20;
 
               this.x = 0;
@@ -182,8 +165,7 @@ export class PaintComponent implements OnInit {
             for(var i = 0; i < 12; i++){ 
             
             if (s.dist(this.x, this.y, i*this.scl, 140)<20){
-              this.total=0;
-              this.tail=[];
+
               this.scl=20;
 
               this.x = 0;
@@ -193,8 +175,7 @@ export class PaintComponent implements OnInit {
           }
           for(var i = 0; i < 15; i++){
             if (s.dist(this.x, this.y, i*this.scl, 220)<20){
-              this.total=0;
-              this.tail=[];
+
               this.scl=20;
 
               this.x = 0;
@@ -204,28 +185,21 @@ export class PaintComponent implements OnInit {
 
           }
       }
-    
+      /** updates the position of the rectangle */
       s.update = () => {
-        for(var i = 0; i <this.tail.length-1; i++){
-          this.tail[i]= this.tail[i+1];  
-        }
-        this.tail[this.total-1] = s.createVector(this.x,this.y);
+        
 
         this.x = this.x + this.xspeed*this.scl;
         this.y = this.y + this.yspeed*this.scl;
         this.x = s.constrain(this.x,0,s.width-this.scl);
         this.y = s.constrain(this.y,0,s.width-this.scl);
         s.background('#323259');
-        if(this.total > this.score){
-          this.score = this.total;
-        }
+        
       }
      
-      
+      /** shows where the rectangle is */
       s.show = () => {
-        for (var i = 0; i < this.total; i++){
-          s.rect(this.tail[i].x, this.tail[i].y, this.scl, this.scl);
-        }
+        
 
 
           s.rect(this.x, this.y, this.scl, this.scl);
@@ -238,6 +212,7 @@ export class PaintComponent implements OnInit {
 
     this.canvas3 = new p5(sketch);
   }
+  /** resets the game */
   newGame(){
     this.x = 0;
     this.y = 0;
