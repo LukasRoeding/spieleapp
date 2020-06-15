@@ -13,15 +13,16 @@ export class BoardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  /** a new game is started */
     this.newGame();
   }
-  /** initialisiert das Spiel **/
+  /** resets the game. squares stores the 9 squares that the tic-tac-toe board has.  **/
   newGame(){
     this.squares = Array(9).fill(null);
     this.winner = null;
     this.xIsNext = true;
   }
-  /** wenn X am Zug ist, ist O als nächstes dran, wenn nicht ist X als nächstes dran **/
+  /** if xIsNext is true, then its X turn, if it is false, then it is O turn. **/
   get player(){
     return this.xIsNext ? 'X' : 'O';
   }
@@ -29,14 +30,17 @@ export class BoardComponent implements OnInit {
   der nächste Spieler ist dann am Zug **/
   makeMove(idx: number){
     if (!this.squares[idx]){
+      /** if a square is clicked the corresponding value in the array gets changed with X or O. 
+       * After that the current player swaps.*/
       this.squares.splice(idx,1,this.player);
       this.xIsNext = !this.xIsNext;
 
     }
+    /** checks if a winner has been found after the move has been made. */
     this.winner = this.calculateWinner();
   }
   calculateWinner() {
-    /** Alle möglichen Boardstates, bei denen man gewonnen hat **/
+    /** lines has all the different rows, collums and diagonals in which a player has won **/
     const lines = [
       [0, 1, 2],
       [3, 4, 5],
@@ -47,7 +51,7 @@ export class BoardComponent implements OnInit {
       [0, 4, 8],
       [2, 4, 6]
     ];
-    /** überprüft ob einer dieser Boardstates erreicht wurde **/
+    /** this loop checks the squares array, if a player has met any of the winconditions. **/
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c] = lines[i];
       if (

@@ -7,17 +7,20 @@
 
 
 
-<! wenn(ngIf) ein Spieler gewinnt, wird dieser Text angezeigt, sonst nicht>
+<!--if a player wins(winner gets a value) this text is shown-->
 <h2 *ngIf="winner">
     Spieler {{winner}} gewinnt!
 </h2>
 <main>
+  <!-- for every value in squares a new square is generated and but into a grid 3x3 grid.
+  each square has an index which is used to change is corresponding value in the squares array.-->
     <app-square
         *ngFor="let val of squares; let i = index"
         [value]="val"
         (click)="makeMove(i)">
     </app-square>
 </main>
+<!-- resets the board-->
 <button nbButton hero status="success" size="giant" (click)="newGame()">neues Spiel</button>
 
     </div>
