@@ -17,23 +17,24 @@ export class VierGewinntBoardComponent implements OnInit {
   ngOnInit() {
     this.newGame();
   }
-  /** initialisiert das Spiel **/
+  /** starts a new game / resets the board. A connect-four game has 42(6*7) squares which can be filled. 
+   * Each element in the squares array represents a square**/
   newGame(){
     this.squares = Array(42).fill(null);
     this.winner = null;
     this.xIsNext = true;
     this.spieler = true;
   }
-  /** wenn Grün am Zug ist, ist Blau als nächstes dran, falls nicht, ist Grün als nächstes dran **/
+  /** gets the current player, if spieler is true Grün is returned, otherwise Blau is beeing returned**/
   get player(){
     return this.spieler ? 'Grün' : 'Blau';
   }
-
+  /** since some of the code from the tic-tac-toe game is beeing recycled, 
+   * the player() function is still in this code, just under the name player2() */
   get player2(){
     return this.xIsNext ? 'X' : 'O';
   }
-  /** wenn ein Feld noch nicht belegt ist, wird Grün / Blau eingefügt
-  der nächste Spieler ist dann am Zug **/
+  /** if a square has no value and its beeing clicked(makeMove) the lowest square in the collum is getting filled.**/
   makeMove(idx: number){
     if (!this.squares[idx+35] && idx < 7){
       this.squares.splice(idx+35,1,this.player2);
@@ -65,7 +66,8 @@ export class VierGewinntBoardComponent implements OnInit {
     this.winner = this.calculateWinner();
   }
   calculateWinner() {
-    /** Alle möglichen Boardstates, bei denen man gewonnen hat **/
+    /** just like the tic tac toe game this function checks if a winner is found after a move has been made.
+     * lines stores all the possible ways 4 pieces can be placed to get a wincondition inside the array squares.**/
     const lines = [
       [0,1,2,3],[1,2,3,4],[2,3,4,5],[3,4,5,6],
       [7,8,9,10],[8,9,10,11],[9,10,11,12],[10,11,12,13],
@@ -83,7 +85,8 @@ export class VierGewinntBoardComponent implements OnInit {
       [7, 15, 23, 31],[8, 16, 24, 32],[9, 17, 25, 33],[10, 18, 26, 34],
       [14, 22, 30, 38],[15, 23, 31, 39],[16, 24, 32, 40],[17, 25, 33, 31],
     ];
-    /** überprüft ob einer dieser Boardstates erreicht wurde **/
+    /** squares collored green have an invisible X in them**/
+    /** if the array has X at the indices of lines[] Grün is returned as the winner*/
     for (let i = 0; i < lines.length; i++) {
       const [a, b, c, d] = lines[i];
       if (
@@ -95,6 +98,8 @@ export class VierGewinntBoardComponent implements OnInit {
 
       ) {
         return 'Grün';
+      /** squares collored blue have an invisible X in them
+       * if the array has O at the indices of lines[] Grün is returned as the winner**/
       } else if (        this.squares[a] &&
         this.squares[a] === this.squares[b] &&
         this.squares[a] === this.squares[c] &&
