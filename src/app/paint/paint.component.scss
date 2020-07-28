@@ -26,10 +26,10 @@
   
 }
 .button-large{
-  visibility: hidden;
+  display: none;
 }
 .button-small{
-  visibility: hidden;
+  display:none
 }
 @media screen and (max-width: 865px){
   .grid-accordion{
@@ -37,11 +37,11 @@
     grid-column: 1;
   }
   .button-small{
-  visibility: visible;
+  display: initial;
   width:50%;
   margin-bottom: 1px;}
   .button-large{
-    visibility: visible;
+    display: inherit;
     width:100%;
     margin-bottom: 1px;
    }
