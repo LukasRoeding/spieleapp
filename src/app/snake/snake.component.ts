@@ -123,7 +123,7 @@ export class SnakeComponent implements OnInit {
             if (s.dist(this.x, this.y, this.tail[i].x, this.tail[i].y)<5){
               this.total=0;
               this.tail=[];
-              this.scl=30;
+              this.scl=20;
             }
           }
       }
