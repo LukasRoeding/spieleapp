@@ -9,6 +9,7 @@ import * as p5 from 'p5';
   styleUrls: ['./snake.component.scss']
 })
 export class SnakeComponent implements OnInit {
+  size = 20;
   canvas: any;
   /** coordinates of the snake */
   x = 0;
@@ -97,15 +98,12 @@ export class SnakeComponent implements OnInit {
          * total is increased, so a new rectangle will be created. when total reaches 10, the snake becomes larger and faster.
          */
         s.eat = () => {
-          if (s.dist(this.x,this.y,(s.windowHeight - 300 - this.scl)*this.a,(s.windowHeight - 300 - this.scl)*this.b)<this.scl){
+          if (s.dist(this.x,this.y,(s.windowHeight - 300 - this.size)*this.a,(s.windowHeight - 300 - this.size)*this.b)<=this.size){
             
             this.a=Math.random();
             this.b = Math.random();
             this.total++;
-            if(this.total == 10){
-              this.scl=this.scl+10;
-            }
-            
+            s.frameRate(15 + this.total/10)
           }else{
             return false;
           }
@@ -125,7 +123,7 @@ export class SnakeComponent implements OnInit {
             if (s.dist(this.x, this.y, this.tail[i].x, this.tail[i].y)<5){
               this.total=0;
               this.tail=[];
-              this.scl=20;
+              this.scl=30;
             }
           }
       }
@@ -149,11 +147,11 @@ export class SnakeComponent implements OnInit {
       /** show shows the rectangles. With this function the head of the snake and its tail is created on the canvas.*/
       s.show = () => {
         for (var i = 0; i < this.total; i++){
-          s.rect(this.tail[i].x, this.tail[i].y, this.scl, this.scl);
+          s.rect(this.tail[i].x, this.tail[i].y, this.size, this.size);
         }
 
 
-          s.rect(this.x, this.y, this.scl, this.scl);
+          s.rect(this.x, this.y, this.size, this.size);
 
         
 

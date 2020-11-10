@@ -1,6 +1,6 @@
 <div class="grid-container">
 
-<div id="sketch-holder"><h1>Highscore: {{score}}</h1></div>
+<div id="sketch-holder"><h1 *ngIf="score > 99">YOU WON!</h1><h1>Highscore: {{score}}</h1></div>
 <div>
   <button class="button-large"(click)="up()" nbButton hero status="info" > up </button>
   <button (click)="left()" nbButton hero status="info" > left </button>
